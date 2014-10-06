@@ -4,6 +4,10 @@
 
 package xterm256
 
+import (
+	"errors"
+)
+
 var (
 	// Define the 16 system colors. See http://pln.jonas.me/xterm-colors
 
@@ -39,4 +43,41 @@ const (
 type Color struct {
 	ForegroundColor int
 	BackgroundColor int
+}
+
+func NewColor(r, g, b int) (Color, error) {
+	c := Color{ForegroundColor: -1, BackgroundColor: -1}
+	return c, c.SetForeground(r, g, b)
+}
+
+func (c *Color) SetBackground(r, g, b int) error {
+	code, err := c.rgbToColorCode(r, g, b)
+	if err != nil {
+		return err
+	}
+
+	c.BackgroundColor = code
+	return nil
+}
+
+func (c *Color) SetForeground(r, g, b int) error {
+	code, err := c.rgbToColorCode(r, g, b)
+	if err != nil {
+		return err
+	}
+
+	c.ForegroundColor = code
+	return nil
+}
+
+// rgbToColorCode converts RGB value to Xterm 256 code.
+// For more details, see: http://pln.jonas.me/xterm-colors
+func (c Color) rgbToColorCode(r, g, b int) (int, error) {
+	code := 16 + r*36 + g*6 + b
+
+	if code < 0 || code > 255 {
+		return -1, errors.New("Invalid RGB component!")
+	}
+
+	return code, nil
 }
