@@ -6,6 +6,9 @@ package xterm256
 
 import (
 	"errors"
+	"fmt"
+	"io"
+	"os"
 )
 
 var (
@@ -80,4 +83,58 @@ func (c Color) rgbToColorCode(r, g, b int) (int, error) {
 	}
 
 	return code, nil
+}
+
+func Fprint(c Color, w io.Writer, a ...interface{}) (n int, err error) {
+	return fmt.Fprint(w, wrapString(c, fmt.Sprint(a...)))
+}
+
+func Fprintf(c Color, w io.Writer, format string, a ...interface{}) (n int, err error) {
+	return fmt.Fprint(w, wrapString(c, fmt.Sprintf(format, a...)))
+}
+
+func Fprintln(c Color, w io.Writer, a ...interface{}) (n int, err error) {
+	return fmt.Fprintln(w, wrapString(c, fmt.Sprint(a...)))
+}
+
+func Print(c Color, a ...interface{}) (n int, err error) {
+	return fmt.Fprint(os.Stdout, wrapString(c, fmt.Sprint(a...)))
+}
+
+func Printf(c Color, format string, a ...interface{}) (n int, err error) {
+	return fmt.Fprint(os.Stdout, wrapString(c, fmt.Sprintf(format, a...)))
+}
+
+func Println(c Color, a ...interface{}) (n int, err error) {
+	return fmt.Fprintln(os.Stdout, wrapString(c, fmt.Sprint(a...)))
+}
+
+func Sprint(c Color, a ...interface{}) string {
+	return wrapString(c, fmt.Sprint(a...))
+}
+
+func Sprintf(c Color, format string, a ...interface{}) string {
+	return wrapString(c, fmt.Sprintf(format, a...))
+}
+
+func Sprintln(c Color, a ...interface{}) string {
+	return wrapString(c, fmt.Sprintln(a...))
+}
+
+func wrapString(c Color, str string) string {
+	return foregroundCode(c) + backgroundCode(c) + str + resetCode
+}
+
+func backgroundCode(c Color) string {
+	if c.BackgroundColor != -1 {
+		return fmt.Sprintf("\033[48;5;%dm", c.BackgroundColor)
+	}
+	return ""
+}
+
+func foregroundCode(c Color) string {
+	if c.ForegroundColor != -1 {
+		return fmt.Sprintf("\033[38;5;%dm", c.ForegroundColor)
+	}
+	return ""
 }
