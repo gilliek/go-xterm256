@@ -2,6 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+/*
+Package xterm256 aims to provide an API similar to fmt for printing colored
+string in a 256 colors terminal.
+*/
 package xterm256
 
 import (
