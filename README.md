@@ -1,5 +1,8 @@
 # Xterm256
 
+[![Build Status](https://travis-ci.org/gilliek/go-xterm256.png?branch=master)](https://travis-ci.org/gilliek/go-xterm256)
+
+
 Xterm256 aims to be a Go package for printing colored string in a 256 colors terminal.
 
 ## Installation
