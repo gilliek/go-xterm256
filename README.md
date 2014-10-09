@@ -32,9 +32,7 @@ Documentation can be found on either
 
 ## Contribute
 
-You're very welcome to submit pull requests or report bugs :) For submitting a
-pull request, just following GitHub instructions.
-
+You're very welcome to submit pull requests or report bugs :)
 ## License
 
 BSD 3-clauses
