@@ -8,7 +8,7 @@ import (
 	"github.com/gilliek/go-xterm256/xterm256"
 )
 
-func ExampleXterm256() {
+func Example() {
 	// Use a predefined color
 	xterm256.Println(xterm256.Red, "Foo")
 
