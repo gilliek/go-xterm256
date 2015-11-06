@@ -107,7 +107,7 @@ func (c Color) rgbToColorCode(r, g, b int) (int, error) {
 // with the color c. Spaces are added between operands when neither is a string.
 // It returns the number of bytes written and any write error encountered.
 //
-// This is just a wrapper for the fmt.Fprint function, adding the support of
+// This is just a wrapper for the fmt.Fprint function, adding the support for
 // color.
 func Fprint(c Color, w io.Writer, a ...interface{}) (n int, err error) {
 	return fmt.Fprint(w, wrapString(c, fmt.Sprint(a...)))
@@ -116,7 +116,7 @@ func Fprint(c Color, w io.Writer, a ...interface{}) (n int, err error) {
 // Fprintf formats according to a format specifier and writes to w with color c.
 // It returns the number of bytes written and any write error encountered.
 //
-// This is just a wrapper for the fmt.Fprintf function, adding the support of
+// This is just a wrapper for the fmt.Fprintf function, adding the support for
 // color.
 func Fprintf(c Color, w io.Writer, format string, a ...interface{}) (n int, err error) {
 	return fmt.Fprint(w, wrapString(c, fmt.Sprintf(format, a...)))
@@ -127,7 +127,7 @@ func Fprintf(c Color, w io.Writer, format string, a ...interface{}) (n int, err 
 // appended. It returns the number of bytes written and any write error
 // encountered.
 //
-// This is just a wrapper for the fmt.Fprintln function, adding the support of
+// This is just a wrapper for the fmt.Fprintln function, adding the support for
 // color.
 func Fprintln(c Color, w io.Writer, a ...interface{}) (n int, err error) {
 	return fmt.Fprintln(w, wrapString(c, fmt.Sprint(a...)))
@@ -138,7 +138,7 @@ func Fprintln(c Color, w io.Writer, a ...interface{}) (n int, err error) {
 // is a string. It returns the number of bytes written and any write error
 // encountered.
 //
-// This is just a wrapper for the fmt.Print function, adding the support of
+// This is just a wrapper for the fmt.Print function, adding the support for
 // color.
 func Print(c Color, a ...interface{}) (n int, err error) {
 	return fmt.Fprint(os.Stdout, wrapString(c, fmt.Sprint(a...)))
@@ -148,7 +148,7 @@ func Print(c Color, a ...interface{}) (n int, err error) {
 // with color c. It returns the number of bytes written and any write error
 // encountered.
 //
-// This is just a wrapper for the fmt.Printf function, adding the support of
+// This is just a wrapper for the fmt.Printf function, adding the support for
 // color.
 func Printf(c Color, format string, a ...interface{}) (n int, err error) {
 	return fmt.Fprint(os.Stdout, wrapString(c, fmt.Sprintf(format, a...)))
@@ -159,7 +159,7 @@ func Printf(c Color, format string, a ...interface{}) (n int, err error) {
 // newline is appended. It returns the number of bytes written and any write
 // error encountered.
 //
-// This is just a wrapper for the fmt.Println function, adding the support of
+// This is just a wrapper for the fmt.Println function, adding the support for
 // color.
 func Println(c Color, a ...interface{}) (n int, err error) {
 	return fmt.Fprintln(os.Stdout, wrapString(c, fmt.Sprint(a...)))
@@ -169,7 +169,7 @@ func Println(c Color, a ...interface{}) (n int, err error) {
 // resulting string surronded by the ANSI escape codes for the color c. Spaces
 // are added between operands when neither is a string.
 //
-// This is just a wrapper for the fmt.Sprint function, adding the support of
+// This is just a wrapper for the fmt.Sprint function, adding the support for
 // color.
 func Sprint(c Color, a ...interface{}) string {
 	return wrapString(c, fmt.Sprint(a...))
@@ -178,7 +178,7 @@ func Sprint(c Color, a ...interface{}) string {
 // Sprintf formats according to a format specifier and returns the resulting
 // string surronded by the ANSI escape codes for the color c.
 //
-// This is just a wrapper for the fmt.Sprintf function, adding the support of
+// This is just a wrapper for the fmt.Sprintf function, adding the support for
 // color.
 func Sprintf(c Color, format string, a ...interface{}) string {
 	return wrapString(c, fmt.Sprintf(format, a...))
@@ -188,7 +188,7 @@ func Sprintf(c Color, format string, a ...interface{}) string {
 // resulting string surronded by the ANSI escape codes for the color c. Spaces
 // are always added between operands and a newline is appended.
 //
-// This is just a wrapper for the fmt.Sprintf function, adding the support of
+// This is just a wrapper for the fmt.Sprintf function, adding the support for
 // color.
 func Sprintln(c Color, a ...interface{}) string {
 	return wrapString(c, fmt.Sprintln(a...))
