@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	// Define the 16 system colors. See http://pln.jonas.me/xterm-colors
+	// Define the 16 system colors. See http://jonasjacek.github.io/colors/
 
 	Black       = Color{ForegroundColor: 0, BackgroundColor: -1}
 	DarkRed     = Color{ForegroundColor: 1, BackgroundColor: -1}
